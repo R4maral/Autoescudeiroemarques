@@ -217,7 +217,7 @@
   .submit-btn{
     width:100%;padding:14px;margin-top:4px;
     background:var(--orange);color:var(--asphalt);
-    border:none;font-weight:700;font-size:14.5px;
+    border:none;border-radius:4px;font-weight:700;font-size:14.5px;
     text-transform:uppercase;letter-spacing:0.04em;
     cursor:pointer;transition:background .2s, transform .15s;
   }
@@ -240,7 +240,11 @@
     .dash-stats{flex-wrap:wrap;}
     .dash-item{flex:1 1 40%;border-right:none;border-bottom:1px solid #2A4A78;padding-bottom:14px;}
   }
-  @media(max-width:480px){.row-2{grid-template-columns:1fr;}}
+  @media(max-width:480px){
+    .row-2{grid-template-columns:1fr;}
+    .ticket{padding:26px 22px 24px;}
+    .submit-btn{padding:13px;font-size:13.5px;letter-spacing:0.03em;}
+  }
 
   /* ---------- TRUST ---------- */
   .trust{padding:30px 0;background:var(--concrete-2);}
@@ -440,192 +444,117 @@
     overflow:hidden;
   }
   .map-box iframe{width:100%;height:100%;border:0;display:block;}
-
-  /* ---------- EDIT MODE ---------- */
-  body.edit-mode [data-editable]{
-    outline:1.5px dashed var(--orange-dim);
-    outline-offset:3px;
-    cursor:text;
-    border-radius:2px;
-  }
-  body.edit-mode [data-editable]:hover{
-    outline-color:var(--orange);
-    background:rgba(240,169,58,0.12);
-  }
-  body.edit-mode [data-editable]:focus{
-    outline:2px solid var(--orange);
-    background:rgba(240,169,58,0.18);
-  }
-  .edit-toolbar{
-    position:fixed;
-    bottom:22px;right:22px;
-    z-index:200;
-    display:flex;
-    gap:10px;
-    background:var(--asphalt);
-    padding:10px;
-    border-radius:4px;
-    box-shadow:0 12px 32px -8px rgba(0,0,0,0.5);
-    align-items:center;
-  }
-  .edit-toolbar button{
-    font-family:'Inter',sans-serif;
-    font-size:13px;
-    font-weight:600;
-    border:none;
-    padding:11px 16px;
-    border-radius:2px;
-    cursor:pointer;
-    white-space:nowrap;
-    transition:background .2s, color .2s;
-  }
-  #editToggle{background:transparent;color:var(--concrete);border:1.5px solid #2A4A78;}
-  #editToggle:hover{border-color:var(--orange);color:var(--orange);}
-  #editToggle.active{background:var(--orange);color:var(--asphalt);border-color:var(--orange);}
-  #downloadBtn{background:var(--concrete);color:var(--asphalt);}
-  #downloadBtn:hover{background:#fff;}
-  .color-label{
-    display:none;
-    align-items:center;
-    gap:8px;
-    font-family:'Inter',sans-serif;
-    font-size:12.5px;
-    font-weight:600;
-    color:var(--concrete);
-    padding:9px 12px 9px 10px;
-    border:1.5px solid #2A4A78;
-    border-radius:2px;
-    cursor:pointer;
-    white-space:nowrap;
-  }
-  body.edit-mode .color-label{display:inline-flex;}
-  .color-label .swatch{
-    width:16px;height:16px;
-    border-radius:50%;
-    border:1px solid #2A4A78;
-    background:conic-gradient(from 0deg,#E8551E,#F2B705,#4A9D6B,#3D6FE8,#8A3DE8,#E8551E);
-    flex-shrink:0;
-  }
-  .color-label input[type="color"]{
-    position:absolute;
-    width:1px;height:1px;
-    opacity:0;
-    pointer-events:none;
-  }
-  .edit-toolbar .hint{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px;
+  .map-placeholder{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    gap:14px;text-align:center;padding:24px;
     color:#93A0B8;
-    max-width:120px;
-    line-height:1.35;
-    display:none;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
   }
-  body.edit-mode .edit-toolbar .hint{display:block;}
-  @media(max-width:640px){
-    .edit-toolbar{left:16px;right:16px;bottom:16px;flex-wrap:wrap;justify-content:center;}
-    .edit-toolbar .hint{display:none !important;}
+  .map-placeholder button{
+    background:var(--orange);color:var(--asphalt);
+    border:none;padding:11px 20px;border-radius:2px;
+    font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+    cursor:pointer;text-transform:uppercase;letter-spacing:0.03em;
   }
+  .map-placeholder button:hover{background:var(--orange-dim);}
 
-  /* whatsapp floating button */
-  .whatsapp-float{
-    position:fixed;
-    bottom:22px;
-    left:22px;
-    z-index:190;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:#25D366;
-    color:#fff;
-    text-decoration:none;
-    padding:13px 18px 13px 13px;
-    border-radius:50px;
-    box-shadow:0 12px 28px -8px rgba(0,0,0,0.4);
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14px;
-    transition:transform .2s, box-shadow .2s;
+  /* footer legal links */
+  .footer-legal{
+    display:flex;gap:22px;flex-wrap:wrap;
+    margin-top:14px;
   }
-  .whatsapp-float:hover{
-    transform:translateY(-2px);
-    box-shadow:0 16px 34px -8px rgba(0,0,0,0.45);
+  .footer-legal button{
+    background:none;border:none;padding:0;
+    font-family:'Inter',sans-serif;font-size:12px;
+    color:#93A0B8;cursor:pointer;text-decoration:underline;
+    text-underline-offset:2px;
   }
-  .whatsapp-float svg{width:26px;height:26px;flex-shrink:0;}
-  .whatsapp-float .wa-text{white-space:nowrap;}
-  @media(max-width:640px){
-    .whatsapp-float{
-      left:16px;
-      bottom:86px;
-      padding:13px;
-      border-radius:50%;
-    }
-    .whatsapp-float .wa-text{display:none;}
-  }
+  .footer-legal button:hover{color:var(--orange);}
 
-  /* ---------- EDIT AUTH MODAL ---------- */
-  .auth-overlay{
+  /* legal modal */
+  .legal-overlay{
     display:none;
-    position:fixed;
-    inset:0;
-    z-index:300;
-    background:rgba(20,40,74,0.55);
-    align-items:center;
-    justify-content:center;
+    position:fixed;inset:0;z-index:400;
+    background:rgba(20,40,74,0.6);
+    align-items:center;justify-content:center;
     padding:20px;
   }
-  .auth-overlay.show{display:flex;}
-  .auth-card{
+  .legal-overlay.show{display:flex;}
+  .legal-card{
     background:var(--concrete);
-    border-radius:3px;
-    padding:30px 28px;
-    max-width:320px;
-    width:100%;
-    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+    border-radius:4px;
+    max-width:640px;width:100%;
+    max-height:82vh;
+    display:flex;flex-direction:column;
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.5);
   }
-  .auth-card h3{
-    font-size:18px;
-    margin-bottom:8px;
-    text-transform:none;
+  .legal-card-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 26px;border-bottom:1px solid var(--concrete-2);
   }
-  .auth-card p{
-    font-size:13.5px;
+  .legal-card-head h3{font-size:19px;text-transform:none;}
+  .legal-close{
+    background:none;border:none;font-size:22px;line-height:1;
+    color:var(--steel);cursor:pointer;padding:4px 8px;
+  }
+  .legal-close:hover{color:var(--asphalt);}
+  .legal-card-body{
+    padding:22px 26px 28px;
+    overflow-y:auto;
+    font-size:14px;
     color:var(--steel);
-    margin:0 0 18px;
+    line-height:1.7;
   }
-  .auth-card input{
-    width:100%;
-    padding:11px 13px;
-    border:1.5px solid var(--concrete-2);
-    background:var(--white);
-    color:var(--asphalt);
-    font-family:'Inter',sans-serif;
-    font-size:15px;
-    border-radius:1px;
-    margin-bottom:10px;
+  .legal-card-body h4{
+    font-family:'Oswald',sans-serif;font-size:14.5px;
+    text-transform:uppercase;color:var(--asphalt);
+    margin:20px 0 8px;
   }
-  .auth-card input:focus{border-color:var(--orange);outline:none;}
-  .auth-error{
-    font-size:12.5px;
-    color:#C0392B;
-    min-height:16px;
-    margin-bottom:6px;
+  .legal-card-body h4:first-child{margin-top:0;}
+  .legal-card-body p{margin:0 0 10px;}
+  .legal-card-body ul{margin:0 0 10px;padding-left:20px;}
+  .legal-card-body li{margin-bottom:4px;}
+  .legal-panel{display:none;}
+  .legal-panel.active{display:block;}
+
+  /* cookie banner */
+  .cookie-banner{
+    display:none;
+    position:fixed;left:0;right:0;bottom:0;z-index:500;
+    background:var(--asphalt);color:var(--concrete);
+    padding:18px 24px;
+    box-shadow:0 -12px 30px -12px rgba(0,0,0,0.4);
   }
-  .auth-actions{display:flex;gap:10px;margin-top:6px;}
-  .auth-actions button{
-    flex:1;
-    padding:11px;
-    border:none;
-    border-radius:2px;
-    font-weight:700;
-    font-size:13.5px;
-    text-transform:uppercase;
-    letter-spacing:0.03em;
-    cursor:pointer;
+  .cookie-banner.show{display:flex;}
+  .cookie-banner-inner{
+    max-width:1180px;margin:0 auto;
+    display:flex;align-items:center;gap:24px;flex-wrap:wrap;
   }
-  #authCancel{background:transparent;border:1.5px solid var(--concrete-2);color:var(--steel);}
-  #authCancel:hover{border-color:var(--steel);}
-  #authSubmit{background:var(--orange);color:var(--asphalt);}
-  #authSubmit:hover{background:var(--orange-dim);}
+  .cookie-banner p{
+    flex:1;min-width:240px;
+    font-size:13.5px;color:#C6CEDA;margin:0;
+  }
+  .cookie-banner p button{
+    background:none;border:none;color:var(--orange);
+    text-decoration:underline;cursor:pointer;font-size:13.5px;padding:0;
+  }
+  .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-actions button{
+    padding:10px 18px;border-radius:2px;font-size:13px;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;border:none;
+  }
+  #cookieReject{background:transparent;border:1.5px solid #2A4A78;color:var(--concrete);}
+  #cookieReject:hover{border-color:var(--orange);color:var(--orange);}
+  #cookieAccept{background:var(--orange);color:var(--asphalt);}
+  #cookieAccept:hover{background:var(--orange-dim);}
+  @media(max-width:640px){
+    .cookie-banner{padding:16px;}
+    .cookie-actions{width:100%;}
+    .cookie-actions button{flex:1;}
+  }
 </style>
 </head>
 <body>
@@ -833,13 +762,11 @@
         <div class="info-line"><span class="k">Fax</span><span data-editable>249 791 069</span></div>
         <div class="info-line"><span class="k">E-mail</span><span data-editable>autoescudeiro@gmail.com</span></div>
       </div>
-      <div class="map-box reveal">
-        <iframe
-          src="https://www.google.com/maps?q=Rua+da+F%C3%A1brica+de+Papel+do+Almonda,+Torres+Novas&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Localização da Auto Escudeiro e Marques em Torres Novas">
-        </iframe>
+      <div class="map-box reveal" id="mapBox">
+        <div class="map-placeholder" id="mapPlaceholder">
+          <span>O mapa é fornecido pelo Google e só é carregado depois de aceitares, para não definir cookies antes disso.</span>
+          <button type="button" id="loadMapBtn">Carregar mapa</button>
+        </div>
       </div>
     </div>
   </div>
@@ -865,6 +792,11 @@
       </div>
     </div>
     <div class="footer-fine">© 2026 Auto Escudeiro e Marques, Lda &mdash; A Oficina, especialista no seu automóvel.</div>
+    <div class="footer-legal">
+      <button type="button" class="legal-link" data-legal="privacidade">Política de Privacidade</button>
+      <button type="button" class="legal-link" data-legal="termos">Termos de Utilização</button>
+      <button type="button" class="legal-link" data-legal="cookies">Política de Cookies</button>
+    </div>
   </div>
 </footer>
 
@@ -873,28 +805,74 @@
   <span class="wa-text">Falar no WhatsApp</span>
 </a>
 
-<div class="auth-overlay" id="authOverlay">
-  <div class="auth-card">
-    <h3>Editar página</h3>
-    <p>Introduz a password para ativar a edição dos textos.</p>
-    <div class="auth-error" id="authError"></div>
-    <input type="password" id="authPassword" placeholder="Password" autocomplete="off">
-    <div class="auth-actions">
-      <button type="button" id="authCancel">Cancelar</button>
-      <button type="button" id="authSubmit">Entrar</button>
+<div class="legal-overlay" id="legalOverlay">
+  <div class="legal-card">
+    <div class="legal-card-head">
+      <h3 id="legalTitle">Política de Privacidade</h3>
+      <button type="button" class="legal-close" id="legalClose" aria-label="Fechar">×</button>
+    </div>
+    <div class="legal-card-body">
+
+      <div class="legal-panel" data-panel="privacidade">
+        <p>Última atualização: 26 de agosto de 2026.</p>
+        <h4>Quem é o responsável pelo tratamento</h4>
+        <p>Auto Escudeiro e Marques, Lda, com sede na Rua da Fábrica de Papel do Almonda, Lote 7, Zona Industrial, Torres Novas, NIF [inserir NIF], é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste site.</p>
+        <h4>Que dados recolhemos</h4>
+        <p>Através do formulário de contacto recolhemos: nome, número de telemóvel, marca e modelo do veículo e serviço pretendido. Não recolhemos dados sensíveis nem dados de pagamento através deste site.</p>
+        <h4>Para que usamos os seus dados</h4>
+        <ul>
+          <li>Responder ao seu pedido de contacto ou orçamento;</li>
+          <li>Agendar o diagnóstico ou serviço solicitado;</li>
+          <li>Manter um registo do histórico de contacto com o cliente.</li>
+        </ul>
+        <h4>Base legal</h4>
+        <p>O tratamento assenta no seu consentimento, dado ao submeter o formulário, e no interesse legítimo em responder a pedidos de orçamento antes de um eventual contrato de prestação de serviços.</p>
+        <h4>Durante quanto tempo guardamos os dados</h4>
+        <p>Os dados de pedidos de contacto são conservados durante o tempo necessário para o atendimento e, salvo relação comercial subsequente, até 12 meses após o último contacto.</p>
+        <h4>Partilha com terceiros</h4>
+        <p>Não vendemos nem partilhamos os seus dados com terceiros para fins de marketing. Este site utiliza o Google Maps para mostrar a nossa localização e o WhatsApp para contacto direto; estes serviços são operados pela Google e pela Meta, respetivamente, sob as suas próprias políticas de privacidade.</p>
+        <h4>Os seus direitos</h4>
+        <p>Pode a qualquer momento pedir acesso, retificação, apagamento ou portabilidade dos seus dados, ou opor-se ao tratamento, através do e-mail autoescudeiro@gmail.com. Tem também o direito de apresentar reclamação junto da Comissão Nacional de Proteção de Dados (CNPD).</p>
+      </div>
+
+      <div class="legal-panel" data-panel="termos">
+        <p>Última atualização: 26 de agosto de 2026.</p>
+        <h4>Âmbito</h4>
+        <p>Este site tem como finalidade apresentar os serviços da Auto Escudeiro e Marques, Lda e permitir o pedido de contacto ou orçamento. Ao utilizar este site, aceita os presentes termos.</p>
+        <h4>Conteúdo do site</h4>
+        <p>Fazemos os possíveis para manter a informação (serviços, contactos, morada) correta e atualizada, mas não garantimos a ausência de erros ou omissões. Os valores de orçamento apresentados após contacto não são vinculativos até confirmação por escrito.</p>
+        <h4>Propriedade intelectual</h4>
+        <p>Os textos, imagens e design deste site são propriedade da Auto Escudeiro e Marques, Lda ou usados com a devida autorização, não podendo ser copiados ou reutilizados sem consentimento prévio.</p>
+        <h4>Ligações a terceiros</h4>
+        <p>Este site contém ligações e conteúdos de terceiros (Google Maps, WhatsApp), que estão sujeitos aos termos e políticas próprias dessas plataformas, fora do nosso controlo.</p>
+        <h4>Limitação de responsabilidade</h4>
+        <p>Não nos responsabilizamos por indisponibilidades temporárias do site ou por decisões tomadas com base exclusiva na informação nele contida, sem confirmação direta connosco.</p>
+        <h4>Lei aplicável</h4>
+        <p>Estes termos regem-se pela lei portuguesa, sendo competente o foro da comarca de Santarém para qualquer litígio.</p>
+      </div>
+
+      <div class="legal-panel" data-panel="cookies">
+        <p>Última atualização: 26 de agosto de 2026.</p>
+        <h4>O que são cookies</h4>
+        <p>Cookies são pequenos ficheiros guardados no seu dispositivo quando visita um site, usados para o site funcionar corretamente ou para recolher informação sobre a navegação.</p>
+        <h4>Cookies que este site usa</h4>
+        <p>Este site, por si só, não instala cookies de análise ou publicidade. O mapa de localização é fornecido pelo Google Maps e só é carregado depois de clicar em "Carregar mapa" ou aceitar cookies neste aviso; a partir daí, a Google pode definir os seus próprios cookies, de acordo com a política de privacidade da Google.</p>
+        <h4>Como gerir cookies</h4>
+        <p>Pode limpar ou bloquear cookies em qualquer altura nas definições do seu navegador. Bloquear o carregamento do mapa não afeta o resto do funcionamento do site.</p>
+      </div>
+
     </div>
   </div>
 </div>
 
-<div class="edit-toolbar">
-  <button id="editToggle" type="button">Editar textos</button>
-  <label id="colorLabel" class="color-label" for="textColor">
-    <span class="swatch" aria-hidden="true"></span>
-    <input type="color" id="textColor" value="#14284A">
-    Cor do texto
-  </label>
-  <button id="downloadBtn" type="button">Descarregar página</button>
-  <span class="hint">Seleciona o texto e escolhe a cor.</span>
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-inner">
+    <p>Usamos apenas o essencial para o site funcionar. O mapa de localização é do Google e só carrega depois de aceitares. Ver <button type="button" data-legal="cookies">política de cookies</button>.</p>
+    <div class="cookie-actions">
+      <button type="button" id="cookieReject">Rejeitar</button>
+      <button type="button" id="cookieAccept">Aceitar</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -917,104 +895,51 @@
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  // ---------- Edit mode ----------
-  const EDIT_PASSWORD = 'oficina2026'; // muda esta palavra-passe aqui no código
-  const editables = document.querySelectorAll('[data-editable]');
-  const editToggle = document.getElementById('editToggle');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const authOverlay = document.getElementById('authOverlay');
-  const authPassword = document.getElementById('authPassword');
-  const authError = document.getElementById('authError');
-  const authSubmit = document.getElementById('authSubmit');
-  const authCancel = document.getElementById('authCancel');
-  let editing = false;
+  // ---------- Legal modal ----------
+  const legalOverlay = document.getElementById('legalOverlay');
+  const legalTitle = document.getElementById('legalTitle');
+  const legalClose = document.getElementById('legalClose');
+  const legalPanels = document.querySelectorAll('.legal-panel');
+  const legalTitles = {
+    privacidade: 'Política de Privacidade',
+    termos: 'Termos de Utilização',
+    cookies: 'Política de Cookies'
+  };
 
-  function setEditing(on){
-    editing = on;
-    editables.forEach(el => { el.contentEditable = on; });
-    document.body.classList.toggle('edit-mode', on);
-    editToggle.classList.toggle('active', on);
-    editToggle.textContent = on ? 'Sair da edição' : 'Editar textos';
+  function openLegal(key){
+    legalPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+    legalTitle.textContent = legalTitles[key] || '';
+    legalOverlay.classList.add('show');
   }
-
-  function openAuth(){
-    authError.textContent = '';
-    authPassword.value = '';
-    authOverlay.classList.add('show');
-    setTimeout(() => authPassword.focus(), 50);
+  function closeLegal(){
+    legalOverlay.classList.remove('show');
   }
-  function closeAuth(){
-    authOverlay.classList.remove('show');
-  }
-  function tryAuth(){
-    if(authPassword.value === EDIT_PASSWORD){
-      closeAuth();
-      setEditing(true);
-    } else {
-      authError.textContent = 'Password incorreta.';
-      authPassword.value = '';
-      authPassword.focus();
-    }
-  }
-
-  editToggle.addEventListener('click', () => {
-    if(editing){ setEditing(false); return; }
-    openAuth();
+  document.querySelectorAll('[data-legal]').forEach(btn => {
+    btn.addEventListener('click', () => openLegal(btn.dataset.legal));
   });
-  authSubmit.addEventListener('click', tryAuth);
-  authCancel.addEventListener('click', closeAuth);
-  authPassword.addEventListener('keydown', (e) => { if(e.key === 'Enter') tryAuth(); });
-  authOverlay.addEventListener('click', (e) => { if(e.target === authOverlay) closeAuth(); });
+  legalClose.addEventListener('click', closeLegal);
+  legalOverlay.addEventListener('click', (e) => { if(e.target === legalOverlay) closeLegal(); });
 
-  // ---------- Text color ----------
-  const textColor = document.getElementById('textColor');
-  let savedRange = null;
+  // ---------- Map (loads only after interaction/consent) ----------
+  const mapBox = document.getElementById('mapBox');
+  const loadMapBtn = document.getElementById('loadMapBtn');
+  function loadMap(){
+    if(mapBox.querySelector('iframe')) return;
+    mapBox.innerHTML = '<iframe src="https://www.google.com/maps?q=Rua+da+F%C3%A1brica+de+Papel+do+Almonda,+Torres+Novas&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localização da Auto Escudeiro e Marques em Torres Novas"></iframe>';
+  }
+  loadMapBtn.addEventListener('click', loadMap);
 
-  document.addEventListener('selectionchange', () => {
-    if(!editing) return;
-    const sel = window.getSelection();
-    if(!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
-    const range = sel.getRangeAt(0);
-    let node = range.commonAncestorContainer;
-    if(node.nodeType === 3) node = node.parentElement;
-    if(node && node.closest('[data-editable]')){
-      savedRange = range.cloneRange();
-    }
+  // ---------- Cookie banner ----------
+  const cookieBanner = document.getElementById('cookieBanner');
+  const cookieAccept = document.getElementById('cookieAccept');
+  const cookieReject = document.getElementById('cookieReject');
+  setTimeout(() => cookieBanner.classList.add('show'), 400);
+  cookieAccept.addEventListener('click', () => {
+    cookieBanner.classList.remove('show');
+    loadMap();
   });
-
-  textColor.addEventListener('input', () => {
-    if(!editing || !savedRange) return;
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(savedRange);
-    document.execCommand('styleWithCSS', true);
-    document.execCommand('foreColor', false, textColor.value);
-  });
-
-  downloadBtn.addEventListener('click', () => {
-    const wasEditing = editing;
-    setEditing(false);
-
-    const clone = document.documentElement.cloneNode(true);
-    clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
-    clone.classList.remove('edit-mode');
-    const successClone = clone.querySelector('#successState');
-    if (successClone) successClone.classList.remove('show');
-    const formClone = clone.querySelector('#leadForm');
-    if (formClone) formClone.classList.remove('hide');
-
-    const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-    const blob = new Blob([html], {type:'text/html;charset=utf-8'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'pagina-auto-escudeiro-marques.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    if (wasEditing) setEditing(true);
+  cookieReject.addEventListener('click', () => {
+    cookieBanner.classList.remove('show');
   });
 </script>
 
